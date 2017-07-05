@@ -1,3 +1,10 @@
+/*
+* Prompt: What is the largest prime factor of the number 600851475143?
+*
+* Execute: javac Problem03.java; java Problem03
+*
+* Answer: 6857
+*/
 import java.math.BigInteger;
 
 // From http://www.s-anand.net/euler.html
