@@ -1,7 +1,7 @@
 /*
 * Prompt: What is the largest prime factor of the number 600851475143?
 *
-* Execute: javac Problem03.java; java Problem03
+* Execute: javac Problem03.java; java Problem03; rm Problem03.class
 *
 * Answer: 6857
 */
