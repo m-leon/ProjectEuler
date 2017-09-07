@@ -130,10 +130,6 @@ public class Problem54 {
 
   public static class Hand {
     public List<Card> cards = new ArrayList<Card>();
-    private Boolean hasFlush = null;
-    private Boolean hasStraight = null;
-    private Integer hasThreeOfAKind = null;
-    private Integer highCard = null;
 
     public void addCard(Card c) {
       cards.add(c);
@@ -141,53 +137,44 @@ public class Problem54 {
     }
 
     public int highCard() {
-      if (highCard != null) {
-        return this.highCard;
-      }
       int highValue = -1;
       for (Card c : cards) {
         if (c.value > highValue) {
           highValue = c.value;
         }
       }
-      this.highCard = highValue;
       return highValue;
     }
 
     public boolean hasFlush() {
-      if (this.hasFlush == null) {
-        char suit = '\u0000';
-        this.hasFlush = true;
-        for (Card c : cards) {
-          if (suit == '\u0000') {
-            suit = c.suit;
-          }
-          if (suit != c.suit) {
-            this.hasFlush = false;
-            break;
-          }
+      char suit = '\u0000';
+      for (Card c : cards) {
+        if (suit == '\u0000') {
+          suit = c.suit;
+        }
+        // Found non-continuous suit, not a flush
+        if (suit != c.suit) {
+          return false;
         }
       }
-      return Boolean.valueOf(this.hasFlush);
+      return true;
     }
 
+    // Cards assumed to be in order of value at beginning
     public boolean hasStraight() {
-      if (this.hasStraight == null) {
-        int n = -1; // Value of previous card
-        this.hasStraight = true;
-        for (Card c : cards) {
-          if (n == -1) {
-            n = c.value;
-          } else {
-            if (c.value - n != 1) {
-              this.hasStraight = false;
-              break;
-            }
-            n = c.value;
+      int n = -1; // Value of previous card
+      for (Card c : cards) {
+        if (n == -1) {
+          n = c.value;
+        } else {
+          // Found non-continous value, not a straight
+          if (c.value - n != 1) {
+            return false;
           }
+          n = c.value;
         }
       }
-      return Boolean.valueOf(this.hasStraight);
+      return true;
     }
 
     public boolean hasStraightFlush() {
@@ -199,36 +186,30 @@ public class Problem54 {
       return hasStraightFlush() && (cards.get(0).value == 8);
     }
 
+    // Convenience method for no necessary distinct value
     private int hasOfaKind(int n) {
       return hasOfaKind(n, -1);
     }
 
     // Cards are sorted by value, it can be assumed that if they are not consecutive in list, they are not present
-    private int hasOfaKind(int n, int notValue) {
-      if (n == 3 && this.hasThreeOfAKind != null && this.hasThreeOfAKind != -1) {
-        return Integer.valueOf(this.hasThreeOfAKind);
-      }
+    private int hasOfaKind(int n, int distinctFrom) {
       int v = -1; // Value that is being counted
       int count = 0; // # of consecutive values
       for (Card c : cards)  {
-        if (c.value == notValue) {
+        if (c.value == distinctFrom) {
           continue;
         }
+        // Found new value, restart count
         if (c.value != v) {
           count = 1;
           v = c.value;
         } else {
           count += 1;
         }
-        if (count >= 3) {
-          this.hasThreeOfAKind = v;
-        }
+        // Quit counting when limit met
         if (count >= n) {
           return v;
         }
-      }
-      if (count >= 3 && notValue != -1) {
-        this.hasThreeOfAKind = -1;
       }
       return -1;
     }
