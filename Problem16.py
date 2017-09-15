@@ -1,6 +1,6 @@
 # Prompt: What is the sum of the digits of the number 2^(1000)?
 #
-# Execute: python Problem13.py
+# Execute: python Problem16.py
 #
 # Answer: 1366
 n = 2
