@@ -6,11 +6,12 @@
 *
 * Answer: 31626
 */
-function sumOfD($n) {
-  $sum = 0;
-  for ($i = 1; $i < $n; $i++) {
+function d($n) {
+  $sum = -1 * $n;
+  for ($i = 1; $i < sqrt($n); $i++) {
     if ($n % $i == 0) {
       $sum += $i;
+      $sum += $n / $i;
     }
   }
   return $sum;
@@ -19,7 +20,7 @@ function sumOfD($n) {
 $v = array();
 $s = 0;
 for ($i = 1; $i < 10000; $i++) {
-  $v[$i] = sumOfD($i);
+  $v[$i] = d($i);
   if ($i != $v[$i] && array_key_exists($v[$i], $v) && $v[$v[$i]] == $i) {
     $s += $i;
     $s += $v[$i];
