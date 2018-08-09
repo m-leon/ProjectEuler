@@ -1,7 +1,7 @@
 /*
 * Prompt: Find the first four consecutive integers to have four distinct prime factors each. What is the first of these numbers?
 *
-* Execute: nodejs Problem47.js
+* Execute: node Problem47.js
 *
 * Answer: 134043
 */
