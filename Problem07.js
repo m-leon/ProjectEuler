@@ -1,7 +1,7 @@
 /*
 * Prompt: What is the 10001st prime number?
 *
-* Execute: nodejs Problem07.js
+* Execute: node Problem07.js
 *
 * Answer: 104743
 */

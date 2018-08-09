@@ -1,7 +1,7 @@
 /*
 * Prompt: How many Sundays fell on the first of the month during the twentieth century?
 *
-* Execute: nodejs Problem19.js
+* Execute: node Problem19.js
 *
 * Answer: 171
 *

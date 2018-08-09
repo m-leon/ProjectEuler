@@ -1,7 +1,7 @@
 /*
 * Prompt: Find the sum of all the primes below two million.
 *
-* Execute: nodejs Problem10.js
+* Execute: node Problem10.js
 *
 * Answer: 142913828922
 */

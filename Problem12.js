@@ -1,7 +1,7 @@
 /*
 * Prompt: What is the value of the first triangle number to have over five hundred divisors?
 *
-* Execute: nodejs Problem12.js
+* Execute: node Problem12.js
 *
 * Answer: 76576500
 */

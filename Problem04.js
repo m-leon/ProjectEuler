@@ -1,7 +1,7 @@
 /*
 * Prompt: Find the largest palindrome made from the product of two 3-digit numbers.
 *
-* Execute: nodejs Problem04.js
+* Execute: node Problem04.js
 *
 * Answer: 906609
 */
